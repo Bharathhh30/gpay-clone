@@ -13,7 +13,7 @@ const Final = () => {
       onAnimationFinish={() => {
         animationRef.current?.pause(); // pause at end
       }}
-      style={{ width: 400, height: 400 , marginBottom: -200, marginTop: -260 }}
+      style={{ width: 400, height: 400 , marginBottom: -200, marginTop: -10 }}
       
     />
   );

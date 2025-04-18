@@ -21,7 +21,6 @@ export default function ResultScreen() {
     setIsBottomSheetVisible(false); // Close BottomSheet
   };
 
-
   //   use local seacrch params to get the data as a prop that is passed from the camera screen
   const firstLetter = (name as string)?.charAt(0)?.toUpperCase() || "?";
 
@@ -30,23 +29,36 @@ export default function ResultScreen() {
       <View className="w-16 h-16 rounded-full bg-amber-800 border-slate-500 border justify-center items-center mb-1">
         <Text className="text-white text-3xl font-medium">{firstLetter}</Text>
       </View>
-      <Text className="text-black mt-2 font-medium " style={{ fontSize: 16 }}>
+      <Text
+        className="text-black mt-2 font-medium text-center"
+        style={{ fontSize: 16, textAlign: "center" }}
+      >
         Paying {name}
       </Text>
       {/* sheild check - Banking name : name but end..... */}
-      <View className="flex-row items-center justify-center  ">
-        <View className="pt-2 pr-2">
-          <MaterialCommunityIcons name="shield-check" size={16} color="green" />
-        </View>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <MaterialCommunityIcons
+          name="shield-check"
+          size={16}
+          color="green"
+          style={{ marginRight: 6 }}
+        />
         <Text
-          className="text-black mt-2 w-72 font-medium "
-          style={{ fontSize: 14 }}
+          className="text-black font-medium text-center"
           numberOfLines={1}
           ellipsizeMode="tail"
+          style={{ fontSize: 14, maxWidth: "85%" }}
         >
-          Banking name : {name}
+          Banking name: {name}
         </Text>
       </View>
+
       <Text className="text-slate-800 mt-2 pt-2 font-normal ">
         UPI ID: {upiId}
       </Text>
@@ -71,13 +83,15 @@ export default function ResultScreen() {
       {/* Bottom button */}
       <View className="items-end justify-end pr-4 pb-6">
         {!isContinueClicked && (
-          <TouchableOpacity className="bg-blue-600 px-6 py-3 rounded-xl" onPress={handleContinueClick}>
+          <TouchableOpacity
+            className="bg-blue-600 px-6 py-3 rounded-xl"
+            onPress={handleContinueClick}
+          >
             <Text className="text-white text-base font-semibold">Continue</Text>
           </TouchableOpacity>
-
         )}
-        </View>
-        {/* Bottom Sheet Component */}
+      </View>
+      {/* Bottom Sheet Component */}
       <BottomSheetComponent
         isVisible={isBottomSheetVisible}
         amount={amount}
