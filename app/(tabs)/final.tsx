@@ -3,8 +3,8 @@ import React from "react";
 import Final from "@/components/Tick";
 import { useLocalSearchParams } from "expo-router";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { Feather } from "@expo/vector-icons"
-import Entypo from '@expo/vector-icons/Entypo';
+import { Feather } from "@expo/vector-icons";
+import Entypo from "@expo/vector-icons/Entypo";
 
 const FinalScreen = () => {
   const amount = useLocalSearchParams();
@@ -18,7 +18,9 @@ const FinalScreen = () => {
 
   const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
   const ampm = hours >= 12 ? "pm" : "am";
-  const formattedTime = `${formattedHours}:${minutes.toString().padStart(2, "0")} ${ampm}`;
+  const formattedTime = `${formattedHours}:${minutes
+    .toString()
+    .padStart(2, "0")} ${ampm}`;
   const formattedDateTime = `${day} ${month} ${year}, ${formattedTime}`;
 
   return (
@@ -27,7 +29,7 @@ const FinalScreen = () => {
 
       {/* Amount */}
       <Text className="text-4xl font-medium text-black mt-40">
-        ₹{amount.amount}.00
+        ₹{Number(amount.amount).toLocaleString("en-IN")}.00
       </Text>
 
       {/* Paid to */}
@@ -59,23 +61,25 @@ const FinalScreen = () => {
       {/* logo */}
       <View className=" mt-32">
         {/* <Text className="text-xs font-medium ">Powered By</Text> */}
-      <Image 
-        source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/UPI_logo.svg/1200px-UPI_logo.svg.png' }}
-        width={50}
-        height={50}
-        resizeMode="contain"
-      />
+        <Image
+          source={{
+            uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/UPI_logo.svg/1200px-UPI_logo.svg.png",
+          }}
+          width={50}
+          height={50}
+          resizeMode="contain"
+        />
       </View>
       <View className="flex-row justify-center gap-2 items-center w-full px-6 mt-8 mb-20">
-      <TouchableOpacity className="flex-row items-center bg-transparent border border-black px-4 py-3 rounded-full">
-      <Entypo name="share" size={24} color="black" />
-        <Text className="text-black ml-2 font-medium">Share screenshot</Text>
-      </TouchableOpacity>
+        <TouchableOpacity className="flex-row items-center bg-transparent border border-black px-4 py-3 rounded-full">
+          <Entypo name="share" size={24} color="black" />
+          <Text className="text-black ml-2 font-medium">Share screenshot</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity className="bg-[#d6e4ff] px-6 py-4 rounded-full">
-        <Text className="text-black font-semibold">Done</Text>
-      </TouchableOpacity>
-    </View>
+        <TouchableOpacity className="bg-[#d6e4ff] px-6 py-4 rounded-full">
+          <Text className="text-black font-semibold">Done</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
